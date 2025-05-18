@@ -1,6 +1,8 @@
 
 export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
 
+    const formattedKanyeArr = `- ${kanyeQuotesArray.join('\n- ')}`;
+
     const prompt = `
         You are a creative quote generator.  
         You will be given 10 example quotes and a list of previously generated quotes.  
@@ -104,7 +106,7 @@ export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
         }
 
         Example Quotes:  
-         ${kanyeQuotesArray}
+         ${formattedKanyeArr}
 
         Quotes already used:  
          ${quotesUsedArray}
@@ -118,23 +120,28 @@ export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
         - Be distinct from all other newly generated quotes  
         - Not reuse or resemble any ideas, metaphors, or phrases from the previously generated quotes  
 
-        Return the 10 quotes as a single string separated by the symbol “_”. Do not include quotation marks around the quotes. Only return the quotes.`
+        Return the 10 quotes as a single string separated by the symbol “_”. 
+        Do not include quotation marks around the quotes.
+        Do NOT include a new line break at the end of each quote.
+        Only return the quotes.`
 
     return prompt
 }
 
-const exKanyeArr = [
-  'We have to evolve',
-  'Two years ago we had 50 million people subscribed to music streaming services around the world. Today we have 400 million.',
-  "If I don't scream, if I don't say something then no one's going to say anything.",
-  'We have to evolve',
-  'I want the world to be better! All I want is positive! All I want is dopeness!',
-  "I love sleep; it's my favorite.",
-  'I wish I had a friend like me',
-  'The world is our family',
-  'We used to diss Michael Jackson the media made us call him crazy ... then they killed him',
-  "I'm nice at ping pong"
-]
-const exAiArr = []
+// const exKanyeArr = [
+//   'We have to evolve',
+//   'Two years ago we had 50 million people subscribed to music streaming services around the world. Today we have 400 million.',
+//   "If I don't scream, if I don't say something then no one's going to say anything.",
+//   'We have to evolve',
+//   'I want the world to be better! All I want is positive! All I want is dopeness!',
+//   "I love sleep; it's my favorite.",
+//   'I wish I had a friend like me',
+//   'The world is our family',
+//   'We used to diss Michael Jackson the media made us call him crazy ... then they killed him',
+//   "I'm nice at ping pong"
+// ]
 
-console.log(CraftPrompt(exKanyeArr, exAiArr))
+// const formattedKanyeArr = `- ${exKanyeArr.join('\n- ')}`;
+// const exAiArr = []
+
+// console.log(CraftPrompt(formattedKanyeArr, exAiArr))

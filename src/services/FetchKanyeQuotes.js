@@ -16,9 +16,6 @@ export default async function FetchKanyeQuotes() {
         kanyeQuotesArray.push(`${data.quote}`)
     }
 
-    console.log(kanyeQuotesArray)
     // 2. Return the same array received but now with new values
    return kanyeQuotesArray
 }
-
-FetchKanyeQuotes()
