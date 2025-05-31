@@ -1,7 +1,6 @@
 // import dotenv from "dotenv"
 import { GoogleGenAI } from "@google/genai";
 import CraftPrompt from "./CraftPrompt.js";
-import FetchKanyeQuotes from "./FetchKanyeQuotes.js";
 
 // ------ TESTING LOCALLY ------
 // dotenv.config({ path: "../../.env"});
@@ -20,7 +19,7 @@ export default async function FetchAIQuotes(kanyeQuotesArray, usedQuotesArray) {
     // Craft the Prompt and store it in a var for using as message below
     const prompt = await CraftPrompt(kanyeQuotesArray, usedQuotesArray);
 
-    // Prompt call to return 10 quotes (10 calls = Exceeds short term rate limit).
+    // Single prompt call that returns 20 generated quots
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash-lite",
         contents: `${prompt} `,

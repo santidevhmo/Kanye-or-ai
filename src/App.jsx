@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 
 function App() {
 
-  const [mainGameState, setmainGameState] = useState("start")
+  const [mainGameState, setMainGameState] = useState("start")
 
   const [kanyeQuotes, setKanyeQuotes] = useState([])
   const [AIQuotes, setAIQuotes] = useState([])
@@ -22,14 +22,15 @@ function App() {
       
       { mainGameState === "start" ? ( // ---- Render Start Screen ----
         <StartScreen
-          setMainGameState={setmainGameState}
+          setMainGameState={setMainGameState}
           usedQuotesState={usedQuotes}
         />
       ) : mainGameState === "playing" ? ( // ---- Render Playing Screen -----
         <Playing
           kanyeQuotesState={kanyeQuotes}
           AIQuotesState={AIQuotes}
-          mainGameState={mainGameState}
+          usedQuotesState={usedQuotes}
+          setMainGameState={setMainGameState}
         />
       ) : ( // ---- Default render = Start Screen ----
         <h2>Default render</h2>
