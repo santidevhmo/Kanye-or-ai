@@ -14,7 +14,7 @@ function App() {
 
   // Trigger the initial data fetching util func that fills the kanyeQuotes and AIQuotes arrays
   useEffect(() => {
-    // FetchInitialData(kanyeQuotes, setKanyeQuotes, AIQuotes, setAIQuotes, usedQuotes, setUsedQuotes)
+    FetchInitialData(kanyeQuotes, setKanyeQuotes, AIQuotes, setAIQuotes, usedQuotes, setUsedQuotes)
   }, [])
 
   return (
@@ -27,10 +27,13 @@ function App() {
         />
       ) : mainGameState === "playing" ? ( // ---- Render Playing Screen -----
         <Playing
-          kanyeQuotesState={kanyeQuotes}
-          AIQuotesState={AIQuotes}
-          usedQuotesState={usedQuotes}
+          kanyeQuotesArr={kanyeQuotes}
+          AIQuotesArr={AIQuotes}
+          usedQuotesArr={usedQuotes}
           setMainGameState={setMainGameState}
+          setKanyeQuotes={setKanyeQuotes}
+          setAIQuotes={setAIQuotes}
+          setUsedQuotes={setUsedQuotes}
         />
       ) : ( // ---- Default render = Start Screen ----
         <h2>Default render</h2>

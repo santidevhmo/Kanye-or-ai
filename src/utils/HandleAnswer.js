@@ -1,13 +1,10 @@
+
 export default function HandleAnswer(gameQuoteAuthor, buttonValue, setPlayingGameStatus) {
+    // Correct Answer
     if (gameQuoteAuthor === buttonValue) {
-        console.log("--")
-        console.log(`${gameQuoteAuthor} is equal to ${buttonValue}`)
-        console.log("Setting game state to 'correct'")
         setPlayingGameStatus("correct")
+    // Wrong Answer
     } else {
-        console.log("--")
-        console.log(`${gameQuoteAuthor} is NOT equal to ${buttonValue}`)
-        console.log("Setting game state to 'wrong'")
         setPlayingGameStatus("wrong")
     }
 }
