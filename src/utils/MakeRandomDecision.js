@@ -7,7 +7,7 @@ export default function MakeRandomDecision(kanyeQuotes, AIQuotes, setKanyeQuotes
     if (randomDecision === 0) {
         setGameQuote({
             quote: kanyeQuotes[0],
-            author: "kanye"
+            author: "KanyeWest"
         });
         setKanyeQuotes(prev => prev.slice(1));
     } else {
