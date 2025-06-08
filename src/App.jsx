@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   return (
-    <div className="flex h-full justify-center pt-[40%] md:h-screen md:items-center md:pt-0">
+    <div className="flex h-full justify-center pt-[30%] md:h-screen md:items-center md:pt-0">
       
       { mainGameState === "start" ? ( // ---- Render Start Screen ----
         <StartScreen
