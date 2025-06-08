@@ -13,16 +13,17 @@ export default function StartScreen(props) {
                 {readyToPlay ? "Start Game" : "Not ready yet"}
             </button>
             <div className="fixed bottom-0 left-0 w-full flex flex-row justify-end pb-6 pr-8 bg-transparent z-50">
-                <button className="nes-btn is-warning flex items-center justify-center">
-                    <a
-                        href="https://buymeacoffee.com/santiagdc"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-full h-full"
-                    >
+                <a
+                    href="https://buymeacoffee.com/santiagdc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center"
+                    tabIndex={-1}
+                >
+                    <button className="nes-btn is-warning flex items-center justify-center">
                         <img src="/BuyMeCoffee.svg" alt="Buy me a coffee" style={{ height: "35px" }} />
-                    </a>
-                </button>
+                    </button>
+                </a>
             </div>
         </div>
     )
