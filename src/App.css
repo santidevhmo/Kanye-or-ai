@@ -3,3 +3,7 @@
 html, body, pre, code, kbd, samp {
     font-family: "Press Start 2P", monospace;
 }
+
+html, body {
+    overflow: hidden;
+}

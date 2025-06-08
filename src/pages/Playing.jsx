@@ -114,7 +114,7 @@ export default function Playing(props) {
                     <div className="flex w-full justify-between">
                         <div className="flex">
                             <img
-                                src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "../../public/aiplaceholdercorrect.webp"}
+                                src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "/aiplaceholdercorrect.webp"}
                                 alt="Profile"
                                 className="w-13 h-13 mb-5"
                             />
@@ -146,7 +146,7 @@ export default function Playing(props) {
                     <div className="flex w-full justify-between">
                         <div className="flex">
                             <img
-                                src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholderwrong.webp" : "../../public/aiplaceholderwrong.webp"}
+                                src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholderwrong.webp" : "/aiplaceholderwrong.webp"}
                                 alt="Profile"
                                 className="w-13 h-13 mb-5"
                             />
