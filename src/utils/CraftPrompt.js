@@ -5,11 +5,11 @@ export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
 
     const prompt = `
         You are a creative quote generator.  
-        You will be given 20 example quotes and a list of previously generated quotes.  
-        Your task is to generate **20 original quotes** that reflect the tone, structure, and spontaneity of the example quotes.  
+        You will be given 10 example quotes and a list of previously generated quotes.  
+        Your task is to generate **10 original quotes** that reflect the tone, structure, and spontaneity of the example quotes.  
         Avoid writing quotes that feel like structured stories or have clear beginnings and endings—think fragments, mantras, unexpected insights, or raw thoughts.
 
-        All 20 quotes must:
+        All 10 quotes must:
         - Vary significantly in length (some should be short like “We will be recognized”, others longer like “So many of us need so much less than we have especially when so many of us are in need”)
         - Be stylistically aligned with the example quotes (more stream-of-consciousness, less polished storytelling)
         - Be **different** in idea, metaphor, and phrasing from the previously generated quotes
@@ -112,19 +112,20 @@ export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
          ${quotesUsedArray}
 
         Instruction:  
-        Generate **20 new quotes**.  
+        Generate **10 new quotes**.  
         Each quote must:  
         - Match the tone and spontaneity of the example quotes  
-        - Randomize the sentence lengths (from short fragments to medium rambles). In-between a range of 4 characters to a maximum of 84 characters
+        - Randomize the sentence lengths (from short fragments to medium rambles). In-between a range of 4 characters to a MAXIMUM of 84 characters
         - Avoid structured storytelling—no setups and punchlines  
         - Be distinct from all other newly generated quotes  
         - Not reuse or resemble any ideas, metaphors, or phrases from the previously generated quotes  
         - Each quote 
 
-        Return the 20 quotes as a single string separated by the symbol “_”. 
+        Return the 10 quotes as a single string separated by the symbol “_”. 
         Do not include quotation marks around the quotes.
         Do NOT include a new line break at the end of each quote.
-        Only return the quotes, NOTHING ELSE.`
+        Only return the quotes, NOTHING ELSE.
+        Respect the character count indicated (in-between 4 to a MAX of 84).`
 
     return prompt
 }
