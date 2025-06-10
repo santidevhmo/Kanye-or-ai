@@ -10,7 +10,7 @@ export default function StartScreen(props) {
                 className={readyToPlay ? "nes-btn" : "nes-btn is-disabled"}
                 onClick={() => props.setMainGameState("playing")}
             >
-                {readyToPlay ? "Start Game" : "Not ready yet"}
+                {readyToPlay ? "Start Game" : " Loading... "}
             </button>
             <div className="fixed bottom-0 left-0 w-full flex flex-row justify-end pb-6 pr-8 bg-transparent z-50">
                 <a
