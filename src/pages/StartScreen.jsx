@@ -5,7 +5,7 @@ export default function StartScreen(props) {
 
     return (
         <div className="flex flex-col items-center justify-center gap-6">
-            <img src='/PixeTitleTest.png' className="w-65" />
+            <img src='/PixelTitleTest.png' className="w-65" />
             <button 
                 className={readyToPlay ? "nes-btn" : "nes-btn is-disabled"}
                 onClick={() => props.setMainGameState("playing")}
