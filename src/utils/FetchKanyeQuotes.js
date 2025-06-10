@@ -19,6 +19,3 @@ export default async function FetchKanyeQuotes() {
     // 2. Return the same array received but now with new values
    return kanyeQuotesArray
 }
-
-const exKanyeQuotes = await FetchKanyeQuotes()
-console.log(exKanyeQuotes)
