@@ -144,7 +144,13 @@ export default function Playing(props) {
 
                     <div className="nes-container bg-green-600">
                         <div>
-                            <h3 className="text-lg md:text-2xl  pt-4 text-white">{gameQuote.quote}</h3>
+                            <h3
+                                className={`${
+                                    gameQuote.quote.length > 100 ? "text-md" : "text-lg"
+                                } md:text-2xl pt-4 text-white`}
+                            >
+                                {gameQuote.quote}
+                            </h3>
                         </div>
                     </div>
 
@@ -176,7 +182,13 @@ export default function Playing(props) {
 
                     <div className="nes-container bg-red-600">
                         <div>
-                            <h3 className="text-lg md:text-2xl  pt-4 text-white">{gameQuote.quote}</h3>
+                            <h3
+                                className={`${
+                                    gameQuote.quote.length > 100 ? "text-md" : "text-lg"
+                                } md:text-2xl pt-4 text-white`}
+                            >
+                                {gameQuote.quote}
+                            </h3>
                         </div>
                     </div>
 
