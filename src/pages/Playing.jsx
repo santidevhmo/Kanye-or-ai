@@ -99,15 +99,35 @@ export default function Playing(props) {
                         <p className="title text-8xl">Who said this?</p>
                         <div>
                             {/* Quote Component */}
-                            <h3 className="text-lg md:text-2xl pt-4">{gameQuote.quote}</h3>
-                        </div>
-                    </div>
-                    <div className="flex gap-4 mt-8 justify-center">
-                        <button id="kanye" onClick={() => HandleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)} className="nes-btn w-32">Kanye</button>
-                        <button id="AI" onClick={() => HandleAnswer(gameQuote.author, "AI", setplayingGameStatus)} className="nes-btn w-32">AI</button>
-                    </div>
-                    <h3 className="fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">GAME STREAK: {gameStreak}</h3>
-                </div>
+                            <h3
+                                className={`${
+                                    gameQuote.quote.length > 100 ? "text-md" : "text-lg"
+                                } md:text-2xl pt-4`}
+                            >
+                                {gameQuote.quote}
+                            </h3>
+                            </div>
+                            </div>
+                            <div className="flex gap-4 mt-8 justify-center">
+                                <button
+                                    id="kanye"
+                                    onClick={() => HandleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
+                                    className="nes-btn w-32"
+                                >
+                                    Kanye
+                                </button>
+                                <button
+                                    id="AI"
+                                    onClick={() => HandleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
+                                    className="nes-btn w-32"
+                                >
+                                    AI
+                                </button>
+                            </div>
+                            <h3 className="fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
+                                GAME STREAK: {gameStreak}
+                            </h3>
+                            </div>
                 // ----- Correct Answer UI -----
             ) : playingGameStatus === "correct" ? (
                 <div className="w-[80%] max-w-6xl">
