@@ -6,6 +6,7 @@ import MakeRandomDecision from '../utils/MakeRandomDecision'
 import HandleAnswer from '../utils/HandleAnswer'
 import RefillChecker from '../utils/RefillChecker'
 import { TypingEffect } from '../utils/TypingEffect'
+import { motion } from 'framer-motion';
 
 export default function Playing(props) {
 
@@ -180,16 +181,21 @@ export default function Playing(props) {
                         </div>
                     </div>
 
-                    <div className="nes-container bg-red-600">
-                        <div>
-                            <h3
-                                className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"
-                                    } md:text-2xl pt-4 text-white`}
-                            >
-                                {gameQuote.quote}
-                            </h3>
+                    <motion.div
+                        animate={{
+                            x: [-8, 8, -6, 6, -2, 2, 0],
+                            transition: { duration: 0.4 },
+                        }}
+                    >
+                        <div className="nes-container bg-red-600">
+                            <div>
+                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"} md:text-2xl pt-4 text-white`}>
+                                    {gameQuote.quote}
+                                </h3>
+                            </div>
                         </div>
-                    </div>
+
+                    </motion.div>
 
                     <div className="flex gap-4 mt-8 justify-center">
                         <button
