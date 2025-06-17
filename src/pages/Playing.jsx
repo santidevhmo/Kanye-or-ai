@@ -135,24 +135,31 @@ export default function Playing(props) {
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "/aiplaceholdercorrect.webp"}
                                 alt="Profile"
-                                className="w-13 h-13 mb-5"
-                            />
-                            <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
+                                    className="w-13 h-13 mb-5"
+                                />
+                                <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <motion.div>
-                        <div className="nes-container bg-green-600">
+                        <motion.div
+                            initial={{ boxShadow: "0 0 0px #00ff00" }}
+                            animate={{
+                                boxShadow: [
+                                    "0 0 0px #00ff00",
+                                    "0 0 10px #00ff00",
+                                    "0 0 0px #00ff00"
+                                ],
+                                scale: [1, 1.05, 1]
+                            }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div className="nes-container bg-green-600">
                             <div>
-                                <h3
-                                    className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"
-                                        } md:text-2xl pt-4 text-white`}
-                                >
+                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg" } md:text-2xl pt-4 text-white`}>
                                     {gameQuote.quote}
                                 </h3>
                             </div>
                         </div>
-
                         </motion.div>
 
                         <div className="flex gap-4 mt-8 justify-center">
@@ -168,7 +175,7 @@ export default function Playing(props) {
                             <motion.span key={gameStreak}
                                 initial={{ rotateX: 90, opacity: 0 }}
                                 animate={{ rotateX: 0, opacity: 1 }}
-                                transition={{ delay: 0, duration: 0.2 }}>
+                                transition={{ delay: 0.5, duration: 0.2 }}>
                                 {gameStreak}
                             </motion.span>
                         </h3>
