@@ -2,12 +2,11 @@
 // GO BACK AND TO THE BACKEND WITH PURE HTML COMPONENTS : SIMPLE BTNS, SIMPLE CONTAINER WITH TEXT
 
 import { useState, useEffect } from 'react'
-// import { exKanyeQuotes, exAIQuotes } from "../data/TestData"
-import FetchKanyeQuotes from '../utils/FetchKanyeQuotes'
-import FetchAIQuotes from '../utils/FetchAIQuotes'
 import MakeRandomDecision from '../utils/MakeRandomDecision'
 import HandleAnswer from '../utils/HandleAnswer'
 import RefillChecker from '../utils/RefillChecker'
+import { TypingEffect } from '../utils/TypingEffect'
+import { motion } from 'framer-motion';
 
 export default function Playing(props) {
 
@@ -48,7 +47,7 @@ export default function Playing(props) {
         if (buttonId == "tryAgain") {
             setGameStreak(0)
         }
-        
+
         await MakeRandomDecision(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
@@ -100,34 +99,34 @@ export default function Playing(props) {
                         <div>
                             {/* Quote Component */}
                             <h3
-                                className={`${
-                                    gameQuote.quote.length > 100 ? "text-md" : "text-lg"
-                                } md:text-2xl pt-4`}
+                                className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"
+                                    } md:text-2xl pt-4`}
                             >
-                                {gameQuote.quote}
+                                <TypingEffect text={gameQuote.quote} />
                             </h3>
-                            </div>
-                            </div>
-                            <div className="flex gap-4 mt-8 justify-center">
-                                <button
-                                    id="kanye"
-                                    onClick={() => HandleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
-                                    className="nes-btn w-32"
-                                >
-                                    Kanye
-                                </button>
-                                <button
-                                    id="AI"
-                                    onClick={() => HandleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
-                                    className="nes-btn w-32"
-                                >
-                                    AI
-                                </button>
-                            </div>
-                            <h3 className="fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
-                                GAME STREAK: {gameStreak}
-                            </h3>
-                            </div>
+                        </div>
+                    </div>
+                    <div className="flex gap-4 mt-8 justify-center">
+                        <button
+                            id="kanye"
+                            onClick={() => HandleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
+                            className="nes-btn w-32"
+                        >
+                            Kanye
+                        </button>
+                        <button
+                            id="AI"
+                            onClick={() => HandleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
+                            className="nes-btn w-32"
+                        >
+                            AI
+                        </button>
+                    </div>
+                    <h3 className="fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
+                        GAME STREAK: {gameStreak}
+                    </h3>
+                </div>
+
                 // ----- Correct Answer UI -----
             ) : playingGameStatus === "correct" ? (
                 <div className="w-[80%] max-w-6xl">
@@ -136,34 +135,51 @@ export default function Playing(props) {
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "/aiplaceholdercorrect.webp"}
                                 alt="Profile"
-                                className="w-13 h-13 mb-5"
-                            />
-                            <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
+                                    className="w-13 h-13 mb-5"
+                                />
+                                <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="nes-container bg-green-600">
-                        <div>
-                            <h3
-                                className={`${
-                                    gameQuote.quote.length > 100 ? "text-md" : "text-lg"
-                                } md:text-2xl pt-4 text-white`}
-                            >
-                                {gameQuote.quote}
-                            </h3>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-4 mt-8 justify-center">
-                        <button
-                            onClick={() => handleContinueGameClick("nextQuote")}
-                            className="nes-btn w-62"
+                        <motion.div
+                            initial={{ boxShadow: "0 0 0px #00ff00" }}
+                            animate={{
+                                boxShadow: [
+                                    "0 0 0px #00ff00",
+                                    "0 0 10px #00ff00",
+                                    "0 0 0px #00ff00"
+                                ],
+                                scale: [1, 1.05, 1]
+                            }}
+                            transition={{ duration: 0.5 }}
                         >
-                            Next quote
-                        </button>
+                            <div className="nes-container bg-green-600">
+                            <div>
+                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg" } md:text-2xl pt-4 text-white`}>
+                                    {gameQuote.quote}
+                                </h3>
+                            </div>
+                        </div>
+                        </motion.div>
+
+                        <div className="flex gap-4 mt-8 justify-center">
+                            <button
+                                onClick={() => handleContinueGameClick("nextQuote")}
+                                className="nes-btn w-62"
+                            >
+                                Next quote
+                            </button>
+                        </div>
+                        <h3 className="text-green-600 fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
+                            GAME STREAK:
+                            <motion.span key={gameStreak}
+                                initial={{ rotateX: 90, opacity: 0 }}
+                                animate={{ rotateX: 0, opacity: 1 }}
+                                transition={{ delay: 0.5, duration: 0.2 }}>
+                                {gameStreak}
+                            </motion.span>
+                        </h3>
                     </div>
-                    <h3 className="text-green-600 fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">GAME STREAK: {gameStreak}</h3>
-                </div>
 
 
                 // ----- Wrong Answer UI -----
@@ -180,17 +196,21 @@ export default function Playing(props) {
                         </div>
                     </div>
 
-                    <div className="nes-container bg-red-600">
-                        <div>
-                            <h3
-                                className={`${
-                                    gameQuote.quote.length > 100 ? "text-md" : "text-lg"
-                                } md:text-2xl pt-4 text-white`}
-                            >
-                                {gameQuote.quote}
-                            </h3>
+                    <motion.div
+                        animate={{
+                            x: [-8, 8, -6, 6, -2, 2, 0],
+                            transition: { duration: 0.4 },
+                        }}
+                    >
+                        <div className="nes-container bg-red-600">
+                            <div>
+                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"} md:text-2xl pt-4 text-white`}>
+                                    {gameQuote.quote}
+                                </h3>
+                            </div>
                         </div>
-                    </div>
+
+                    </motion.div>
 
                     <div className="flex gap-4 mt-8 justify-center">
                         <button

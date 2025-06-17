@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 
 export default function StartScreen(props) {
 
@@ -5,7 +6,14 @@ export default function StartScreen(props) {
 
     return (
         <div className="flex flex-col items-center justify-center gap-6">
-            <img src='/PixelTitleTest.webp' className="w-65" />
+            <motion.img
+                src='/PixelTitleTest.webp'
+                className='pixelated w-65'
+                initial={{ opacity: 0}}
+                animate={{ opacity: [0, 1, 0.5, 1] }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+            ></motion.img>
+            {/* <img src='/PixelTitleTest.webp' className="w-65" /> */}
             <button 
                 className={readyToPlay ? "nes-btn" : "nes-btn is-disabled"}
                 onClick={() => props.setMainGameState("playing")}
