@@ -1,5 +1,5 @@
 
-export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
+export default function craftPrompt(kanyeQuotesArray, quotesUsedArray) {
 
     const formattedKanyeArr = `- ${kanyeQuotesArray.join('\n- ')}`;
 
@@ -129,21 +129,3 @@ export default function CraftPrompt(kanyeQuotesArray, quotesUsedArray) {
 
     return prompt
 }
-
-// const exKanyeArr = [
-//   'We have to evolve',
-//   'Two years ago we had 50 million people subscribed to music streaming services around the world. Today we have 400 million.',
-//   "If I don't scream, if I don't say something then no one's going to say anything.",
-//   'We have to evolve',
-//   'I want the world to be better! All I want is positive! All I want is dopeness!',
-//   "I love sleep; it's my favorite.",
-//   'I wish I had a friend like me',
-//   'The world is our family',
-//   'We used to diss Michael Jackson the media made us call him crazy ... then they killed him',
-//   "I'm nice at ping pong"
-// ]
-
-// const formattedKanyeArr = `- ${exKanyeArr.join('\n- ')}`;
-// const exAiArr = []
-
-// console.log(CraftPrompt(formattedKanyeArr, exAiArr))

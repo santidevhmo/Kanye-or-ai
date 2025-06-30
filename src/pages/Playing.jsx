@@ -2,10 +2,10 @@
 // GO BACK AND TO THE BACKEND WITH PURE HTML COMPONENTS : SIMPLE BTNS, SIMPLE CONTAINER WITH TEXT
 
 import { useState, useEffect } from 'react'
-import MakeRandomDecision from '../utils/MakeRandomDecision'
-import HandleAnswer from '../utils/HandleAnswer'
-import RefillChecker from '../utils/RefillChecker'
-import { TypingEffect } from '../utils/TypingEffect'
+import makeRandomDecision from '/src/gameLogic/makeRandomDecision.js'
+import handleAnswer from '/src/gameLogic/handleAnswer.js'
+import refillChecker from '/src/gameLogic/refillChecker.js'
+import { TypingEffect } from '/src/components/TypingEffect.tsx'
 import { motion } from 'framer-motion';
 
 export default function Playing(props) {
@@ -23,7 +23,7 @@ export default function Playing(props) {
     // ---- ON PAGE RENDER -----
     // Load the quote to display on start of the game
     useEffect(() => {
-        MakeRandomDecision(
+        makeRandomDecision(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.setKanyeQuotes,
@@ -48,7 +48,7 @@ export default function Playing(props) {
             setGameStreak(0)
         }
 
-        await MakeRandomDecision(
+        await makeRandomDecision(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.setKanyeQuotes,
@@ -56,7 +56,7 @@ export default function Playing(props) {
             setGameQuote
         )
         setplayingGameStatus("playing")
-        RefillChecker(
+        refillChecker(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.usedQuotesArr,
@@ -65,11 +65,12 @@ export default function Playing(props) {
             props.setUsedQuotes
         )
     }
+
     // Function to handle "Go to home" button but to also run RefillChecker 
     // (not possible to run 2 functions inside onClick)
     async function handleHomeClick() {
         props.setMainGameState("start")
-        RefillChecker(
+        refillChecker(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.usedQuotesArr,
@@ -109,14 +110,14 @@ export default function Playing(props) {
                     <div className="flex gap-4 mt-8 justify-center">
                         <button
                             id="kanye"
-                            onClick={() => HandleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
+                            onClick={() => handleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
                             className="nes-btn w-32"
                         >
                             Kanye
                         </button>
                         <button
                             id="AI"
-                            onClick={() => HandleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
+                            onClick={() => handleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
                             className="nes-btn w-32"
                         >
                             AI

@@ -1,6 +1,6 @@
 
 // Make random decision and assign new quote value
-export default function MakeRandomDecision(kanyeQuotes, AIQuotes, setKanyeQuotes, setAIQuotes, setGameQuote) {
+export default function makeRandomDecision(kanyeQuotes, AIQuotes, setKanyeQuotes, setAIQuotes, setGameQuote) {
 
     // Make random decision to display quote: 0 = Kanye / 1 = AI
     const randomDecision = Math.floor(Math.random() * 2);
