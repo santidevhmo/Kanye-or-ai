@@ -1,14 +1,12 @@
-// ❗️ YOU'RE STUCK DOING THE FRONTEND FIRST AGAIN.
-// GO BACK AND TO THE BACKEND WITH PURE HTML COMPONENTS : SIMPLE BTNS, SIMPLE CONTAINER WITH TEXT
-
 import { useState, useEffect } from 'react'
-import MakeRandomDecision from '../utils/MakeRandomDecision'
-import HandleAnswer from '../utils/HandleAnswer'
-import RefillChecker from '../utils/RefillChecker'
-import { TypingEffect } from '../utils/TypingEffect'
+import makeRandomDecision from '../gameLogic/makeRandomDecision.js'
+import handleAnswer from '../gameLogic/handleAnswer'
+import refillChecker from '../gameLogic/refillChecker.js'
+import { TypingEffect } from '../components/TypingEffect.tsx'
 import { motion } from 'framer-motion';
 
 export default function Playing(props) {
+
 
     // Our Game Quote object that will be constantly updated and stores the values of the currently displayed quote and its author
     const [gameQuote, setGameQuote] = useState({
@@ -23,7 +21,7 @@ export default function Playing(props) {
     // ---- ON PAGE RENDER -----
     // Load the quote to display on start of the game
     useEffect(() => {
-        MakeRandomDecision(
+        makeRandomDecision(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.setKanyeQuotes,
@@ -48,7 +46,7 @@ export default function Playing(props) {
             setGameStreak(0)
         }
 
-        await MakeRandomDecision(
+        await makeRandomDecision(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.setKanyeQuotes,
@@ -56,7 +54,7 @@ export default function Playing(props) {
             setGameQuote
         )
         setplayingGameStatus("playing")
-        RefillChecker(
+        refillChecker(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.usedQuotesArr,
@@ -65,11 +63,12 @@ export default function Playing(props) {
             props.setUsedQuotes
         )
     }
+
     // Function to handle "Go to home" button but to also run RefillChecker 
     // (not possible to run 2 functions inside onClick)
     async function handleHomeClick() {
         props.setMainGameState("start")
-        RefillChecker(
+        refillChecker(
             props.kanyeQuotesArr,
             props.AIQuotesArr,
             props.usedQuotesArr,
@@ -88,8 +87,9 @@ export default function Playing(props) {
                         <div className="flex">
                             <img
                                 src="/guessplaceholder.webp"
-                                alt="Profile"
+                                alt="Profile placeholder"
                                 className="w-13 h-13 mb-5"
+                                aria-label="Profile placeholder image"
                             />
                             <p className="ml-4 pt-3.5">@_________</p>
                         </div>
@@ -109,15 +109,17 @@ export default function Playing(props) {
                     <div className="flex gap-4 mt-8 justify-center">
                         <button
                             id="kanye"
-                            onClick={() => HandleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
+                            onClick={() => handleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
                             className="nes-btn w-32"
+                            aria-label="Select Kanye as the answer"
                         >
                             Kanye
                         </button>
                         <button
                             id="AI"
-                            onClick={() => HandleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
+                            onClick={() => handleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
                             className="nes-btn w-32"
+                            aria-label="Select AI as the answer"
                         >
                             AI
                         </button>
@@ -134,52 +136,54 @@ export default function Playing(props) {
                         <div className="flex">
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "/aiplaceholdercorrect.webp"}
-                                alt="Profile"
-                                    className="w-13 h-13 mb-5"
-                                />
-                                <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
-                            </div>
+                                alt="Profile correct answer"
+                                className="w-13 h-13 mb-5"
+                                aria-label="Profile correct answer image"
+                            />
+                            <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
                         </div>
+                    </div>
 
-                        <motion.div
-                            initial={{ boxShadow: "0 0 0px #00ff00" }}
-                            animate={{
-                                boxShadow: [
-                                    "0 0 0px #00ff00",
-                                    "0 0 10px #00ff00",
-                                    "0 0 0px #00ff00"
-                                ],
-                                scale: [1, 1.05, 1]
-                            }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <div className="nes-container bg-green-600">
+                    <motion.div
+                        initial={{ boxShadow: "0 0 0px #00ff00" }}
+                        animate={{
+                            boxShadow: [
+                                "0 0 0px #00ff00",
+                                "0 0 10px #00ff00",
+                                "0 0 0px #00ff00"
+                            ],
+                            scale: [1, 1.05, 1]
+                        }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className="nes-container bg-green-600">
                             <div>
-                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg" } md:text-2xl pt-4 text-white`}>
+                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"} md:text-2xl pt-4 text-white`}>
                                     {gameQuote.quote}
                                 </h3>
                             </div>
                         </div>
-                        </motion.div>
+                    </motion.div>
 
-                        <div className="flex gap-4 mt-8 justify-center">
-                            <button
-                                onClick={() => handleContinueGameClick("nextQuote")}
-                                className="nes-btn w-62"
-                            >
-                                Next quote
-                            </button>
-                        </div>
-                        <h3 className="text-green-600 fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
-                            GAME STREAK:
-                            <motion.span key={gameStreak}
-                                initial={{ rotateX: 90, opacity: 0 }}
-                                animate={{ rotateX: 0, opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.2 }}>
-                                {gameStreak}
-                            </motion.span>
-                        </h3>
+                    <div className="flex gap-4 mt-8 justify-center">
+                        <button
+                            onClick={() => handleContinueGameClick("nextQuote")}
+                            className="nes-btn w-62"
+                            aria-label="Next quote"
+                        >
+                            Next quote
+                        </button>
                     </div>
+                    <h3 className="text-green-600 fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
+                        GAME STREAK:
+                        <motion.span key={gameStreak}
+                            initial={{ rotateX: 90, opacity: 0 }}
+                            animate={{ rotateX: 0, opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.2 }}>
+                            {gameStreak}
+                        </motion.span>
+                    </h3>
+                </div>
 
 
                 // ----- Wrong Answer UI -----
@@ -189,8 +193,9 @@ export default function Playing(props) {
                         <div className="flex">
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholderwrong.webp" : "/aiplaceholderwrong.webp"}
-                                alt="Profile"
+                                alt="Profile wrong answer"
                                 className="w-13 h-13 mb-5"
+                                aria-label="Profile wrong answer image"
                             />
                             <p className="text-red-600 ml-4 pt-3.5">@{gameQuote.author}</p>
                         </div>
@@ -216,12 +221,14 @@ export default function Playing(props) {
                         <button
                             onClick={() => handleContinueGameClick("tryAgain")}
                             className="nes-btn is-warning w-62"
+                            aria-label="Try again"
                         >
                             Try Again
                         </button>
                         <button
-                            onClick={() => handleHomeClick()}
+                            onClick={handleHomeClick}
                             className="nes-btn w-62"
+                            aria-label="Go back home"
                         >
                             Go back home
                         </button>

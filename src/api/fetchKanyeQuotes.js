@@ -5,7 +5,7 @@ Function to receive the KanyeQuotesArray state var and fill it with 10 quotes to
 ------------------------------
 */ 
 
-export default async function FetchKanyeQuotes() {
+export default async function fetchKanyeQuotes() {
 
     let kanyeQuotesArray = []
 

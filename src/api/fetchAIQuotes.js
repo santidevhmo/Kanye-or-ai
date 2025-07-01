@@ -1,12 +1,12 @@
 // import dotenv from "dotenv"
 import { GoogleGenAI } from "@google/genai";
-import CraftPrompt from "./CraftPrompt.js";
+import craftPrompt from "../utils/craftPrompt.js";
 
 // ------ TESTING LOCALLY ------
 // dotenv.config({ path: "../../.env"});
 
 // Params necessary and only used for passing and running the function to craft the prompt:
-export default async function FetchAIQuotes(kanyeQuotesArray, usedQuotesArray) {
+export default async function fetchAIQuotes(kanyeQuotesArray, usedQuotesArray) {
 
     // Create new client instance of the Hugging Face Inference API
     // ---- PRODUCTION VITE CODE LINE ------ (import.meta.env not supported on Node JS)
@@ -17,7 +17,7 @@ export default async function FetchAIQuotes(kanyeQuotesArray, usedQuotesArray) {
     // Array var that stores and at the end returns the generated AI Quotes
     const AIQuotesArray = []
     // Craft the Prompt and store it in a var for using as message below
-    const prompt = await CraftPrompt(kanyeQuotesArray, usedQuotesArray);
+    const prompt = await craftPrompt(kanyeQuotesArray, usedQuotesArray);
 
     // Single prompt call that returns 20 generated quots
     const response = await ai.models.generateContent({

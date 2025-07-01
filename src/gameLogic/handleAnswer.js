@@ -1,5 +1,5 @@
 
-export default function HandleAnswer(gameQuoteAuthor, buttonValue, setPlayingGameStatus) {
+export default function handleAnswer(gameQuoteAuthor, buttonValue, setPlayingGameStatus) {
     // Correct Answer
     if (gameQuoteAuthor === buttonValue) {
         setPlayingGameStatus("correct")

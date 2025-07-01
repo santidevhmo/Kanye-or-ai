@@ -1,7 +1,7 @@
 import './App.css'
 import StartScreen from './pages/StartScreen'
 import Playing from './pages/Playing.jsx'
-import FetchInitialData from './utils/FetchInitialData.js'
+import fetchInitialData from './api/fetchInitialData.js'
 import { useEffect, useState } from "react"
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   // Trigger the initial data fetching util func that fills the kanyeQuotes and AIQuotes arrays
   useEffect(() => {
-    FetchInitialData(kanyeQuotes, setKanyeQuotes, AIQuotes, setAIQuotes, usedQuotes, setUsedQuotes)
+    fetchInitialData(kanyeQuotes, setKanyeQuotes, AIQuotes, setAIQuotes, usedQuotes, setUsedQuotes)
   }, [])
 
   return (
