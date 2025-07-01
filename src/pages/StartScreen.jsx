@@ -17,11 +17,14 @@ export default function StartScreen({ setMainGameState, usedQuotesState }) {
                 initial={{ opacity: 0}}
                 animate={{ opacity: [0, 1, 0.5, 1] }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-            ></motion.img>
-            {/* <img src='/PixelTitleTest.webp' className="w-65" /> */}
+                alt="Pixelated game title"
+                aria-label="Pixelated game title"
+            />
+            {/* <img src='/PixelTitleTest.webp' className="w-65" alt="Pixelated game title" aria-label="Pixelated game title" /> */}
             <button 
                 className={readyToPlay ? "nes-btn" : "nes-btn is-disabled"}
                 onClick={handleStartGame}
+                aria-label={readyToPlay ? "Start Game" : "Loading"}
             >
                 {readyToPlay ? "Start Game" : " Loading... "}
             </button>
@@ -30,12 +33,10 @@ export default function StartScreen({ setMainGameState, usedQuotesState }) {
                     href="https://buymeacoffee.com/santiagdc"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center"
-                    tabIndex={-1}
+                    className="nes-btn is-warning flex items-center justify-center"
+                    aria-label="Buy me a coffee"
                 >
-                    <button className="nes-btn is-warning flex items-center justify-center">
-                        <img src="/BuyMeCoffee.svg" alt="Buy me a coffee" style={{ height: "35px" }} />
-                    </button>
+                    <img src="/BuyMeCoffee.svg" alt="Buy me a coffee icon" style={{ height: "35px" }} aria-label="Buy me a coffee icon" />
                 </a>
             </div>
         </div>

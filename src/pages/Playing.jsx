@@ -87,8 +87,9 @@ export default function Playing(props) {
                         <div className="flex">
                             <img
                                 src="/guessplaceholder.webp"
-                                alt="Profile"
+                                alt="Profile placeholder"
                                 className="w-13 h-13 mb-5"
+                                aria-label="Profile placeholder image"
                             />
                             <p className="ml-4 pt-3.5">@_________</p>
                         </div>
@@ -110,6 +111,7 @@ export default function Playing(props) {
                             id="kanye"
                             onClick={() => handleAnswer(gameQuote.author, "KanyeWest", setplayingGameStatus)}
                             className="nes-btn w-32"
+                            aria-label="Select Kanye as the answer"
                         >
                             Kanye
                         </button>
@@ -117,6 +119,7 @@ export default function Playing(props) {
                             id="AI"
                             onClick={() => handleAnswer(gameQuote.author, "AI", setplayingGameStatus)}
                             className="nes-btn w-32"
+                            aria-label="Select AI as the answer"
                         >
                             AI
                         </button>
@@ -133,8 +136,9 @@ export default function Playing(props) {
                         <div className="flex">
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "/aiplaceholdercorrect.webp"}
-                                alt="Profile"
+                                alt="Profile correct answer"
                                 className="w-13 h-13 mb-5"
+                                aria-label="Profile correct answer image"
                             />
                             <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
                         </div>
@@ -165,6 +169,7 @@ export default function Playing(props) {
                         <button
                             onClick={() => handleContinueGameClick("nextQuote")}
                             className="nes-btn w-62"
+                            aria-label="Next quote"
                         >
                             Next quote
                         </button>
@@ -188,8 +193,9 @@ export default function Playing(props) {
                         <div className="flex">
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholderwrong.webp" : "/aiplaceholderwrong.webp"}
-                                alt="Profile"
+                                alt="Profile wrong answer"
                                 className="w-13 h-13 mb-5"
+                                aria-label="Profile wrong answer image"
                             />
                             <p className="text-red-600 ml-4 pt-3.5">@{gameQuote.author}</p>
                         </div>
@@ -215,12 +221,14 @@ export default function Playing(props) {
                         <button
                             onClick={() => handleContinueGameClick("tryAgain")}
                             className="nes-btn is-warning w-62"
+                            aria-label="Try again"
                         >
                             Try Again
                         </button>
                         <button
                             onClick={handleHomeClick}
                             className="nes-btn w-62"
+                            aria-label="Go back home"
                         >
                             Go back home
                         </button>
