@@ -1,7 +1,7 @@
 import './App.css'
 import StartScreen from './pages/StartScreen'
 import Playing from './pages/Playing.jsx'
-import fetchInitialData from './api/fetchInitialData.js'
+import fetchInitialData from '/src/api/fetchInitialData.js'
 import { useEffect, useState } from "react"
 
 function App() {

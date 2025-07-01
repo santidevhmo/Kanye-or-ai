@@ -1,6 +1,3 @@
-// ❗️ YOU'RE STUCK DOING THE FRONTEND FIRST AGAIN.
-// GO BACK AND TO THE BACKEND WITH PURE HTML COMPONENTS : SIMPLE BTNS, SIMPLE CONTAINER WITH TEXT
-
 import { useState, useEffect } from 'react'
 import makeRandomDecision from '/src/gameLogic/makeRandomDecision.js'
 import handleAnswer from '/src/gameLogic/handleAnswer.js'
@@ -9,6 +6,7 @@ import { TypingEffect } from '/src/components/TypingEffect.tsx'
 import { motion } from 'framer-motion';
 
 export default function Playing(props) {
+
 
     // Our Game Quote object that will be constantly updated and stores the values of the currently displayed quote and its author
     const [gameQuote, setGameQuote] = useState({
@@ -136,51 +134,51 @@ export default function Playing(props) {
                             <img
                                 src={gameQuote.author === "KanyeWest" ? "/kanyeplaceholdercorrect.webp" : "/aiplaceholdercorrect.webp"}
                                 alt="Profile"
-                                    className="w-13 h-13 mb-5"
-                                />
-                                <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
-                            </div>
+                                className="w-13 h-13 mb-5"
+                            />
+                            <p className="text-green-600 ml-4 pt-3.5">@{gameQuote.author}</p>
                         </div>
+                    </div>
 
-                        <motion.div
-                            initial={{ boxShadow: "0 0 0px #00ff00" }}
-                            animate={{
-                                boxShadow: [
-                                    "0 0 0px #00ff00",
-                                    "0 0 10px #00ff00",
-                                    "0 0 0px #00ff00"
-                                ],
-                                scale: [1, 1.05, 1]
-                            }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <div className="nes-container bg-green-600">
+                    <motion.div
+                        initial={{ boxShadow: "0 0 0px #00ff00" }}
+                        animate={{
+                            boxShadow: [
+                                "0 0 0px #00ff00",
+                                "0 0 10px #00ff00",
+                                "0 0 0px #00ff00"
+                            ],
+                            scale: [1, 1.05, 1]
+                        }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className="nes-container bg-green-600">
                             <div>
-                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg" } md:text-2xl pt-4 text-white`}>
+                                <h3 className={`${gameQuote.quote.length > 100 ? "text-md" : "text-lg"} md:text-2xl pt-4 text-white`}>
                                     {gameQuote.quote}
                                 </h3>
                             </div>
                         </div>
-                        </motion.div>
+                    </motion.div>
 
-                        <div className="flex gap-4 mt-8 justify-center">
-                            <button
-                                onClick={() => handleContinueGameClick("nextQuote")}
-                                className="nes-btn w-62"
-                            >
-                                Next quote
-                            </button>
-                        </div>
-                        <h3 className="text-green-600 fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
-                            GAME STREAK:
-                            <motion.span key={gameStreak}
-                                initial={{ rotateX: 90, opacity: 0 }}
-                                animate={{ rotateX: 0, opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.2 }}>
-                                {gameStreak}
-                            </motion.span>
-                        </h3>
+                    <div className="flex gap-4 mt-8 justify-center">
+                        <button
+                            onClick={() => handleContinueGameClick("nextQuote")}
+                            className="nes-btn w-62"
+                        >
+                            Next quote
+                        </button>
                     </div>
+                    <h3 className="text-green-600 fixed bottom-0 left-0 w-full flex justify-center pb-6 bg-transparent pointer-events-none z-50">
+                        GAME STREAK:
+                        <motion.span key={gameStreak}
+                            initial={{ rotateX: 90, opacity: 0 }}
+                            animate={{ rotateX: 0, opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.2 }}>
+                            {gameStreak}
+                        </motion.span>
+                    </h3>
+                </div>
 
 
                 // ----- Wrong Answer UI -----
@@ -221,7 +219,7 @@ export default function Playing(props) {
                             Try Again
                         </button>
                         <button
-                            onClick={() => handleHomeClick()}
+                            onClick={handleHomeClick}
                             className="nes-btn w-62"
                         >
                             Go back home

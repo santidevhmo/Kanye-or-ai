@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
 
-export default function StartScreen(props) {
+export default function StartScreen({ setMainGameState, usedQuotesState }) {
 
-    const readyToPlay = props.usedQuotesState.length > 0;
+    const readyToPlay = usedQuotesState.length > 0;
+
+    // Handler func for "Start Game" button
+    function handleStartGame() {
+        setMainGameState("playing")
+    }
 
     return (
         <div className="flex flex-col items-center justify-center gap-6">
@@ -16,7 +21,7 @@ export default function StartScreen(props) {
             {/* <img src='/PixelTitleTest.webp' className="w-65" /> */}
             <button 
                 className={readyToPlay ? "nes-btn" : "nes-btn is-disabled"}
-                onClick={() => props.setMainGameState("playing")}
+                onClick={handleStartGame}
             >
                 {readyToPlay ? "Start Game" : " Loading... "}
             </button>
