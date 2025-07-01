@@ -20,7 +20,6 @@ export default function StartScreen({ setMainGameState, usedQuotesState }) {
                 alt="Pixelated game title"
                 aria-label="Pixelated game title"
             />
-            {/* <img src='/PixelTitleTest.webp' className="w-65" alt="Pixelated game title" aria-label="Pixelated game title" /> */}
             <button 
                 className={readyToPlay ? "nes-btn" : "nes-btn is-disabled"}
                 onClick={handleStartGame}
@@ -36,7 +35,12 @@ export default function StartScreen({ setMainGameState, usedQuotesState }) {
                     className="nes-btn is-warning flex items-center justify-center"
                     aria-label="Buy me a coffee"
                 >
-                    <img src="/BuyMeCoffee.svg" alt="Buy me a coffee icon" style={{ height: "35px" }} aria-label="Buy me a coffee icon" />
+                    <img 
+                        src="/BuyMeCoffee.svg" 
+                        alt="Buy me a coffee icon" 
+                        style={{ height: "35px" }} 
+                        aria-label="Buy me a coffee icon" 
+                    />
                 </a>
             </div>
         </div>
