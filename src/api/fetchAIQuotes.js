@@ -1,6 +1,6 @@
 // import dotenv from "dotenv"
 import { GoogleGenAI } from "@google/genai";
-import craftPrompt from "/src/utils/craftPrompt.js";
+import craftPrompt from "../utils/craftPrompt.js";
 
 // ------ TESTING LOCALLY ------
 // dotenv.config({ path: "../../.env"});

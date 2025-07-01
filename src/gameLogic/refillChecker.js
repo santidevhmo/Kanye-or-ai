@@ -1,5 +1,5 @@
-import fetchKanyeQuotes from "/src/api/fetchKanyeQuotes.js"
-import fetchAIQuotes from "/src/api/fetchAIQuotes.js"
+import fetchKanyeQuotes from "../api/fetchKanyeQuotes.js"
+import fetchAIQuotes from "../api/fetchAIQuotes.js"
 
 export default async function refillChecker(kanyeQuotes, AIQuotes, usedQuotes, setKanyeQuotes, setAIQuotes, setUsedQuotes) {
     // If the Kanye Quotes state array has 4 or less values, trigger a refill of it

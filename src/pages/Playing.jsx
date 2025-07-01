@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import makeRandomDecision from '/src/gameLogic/makeRandomDecision.js'
-import handleAnswer from '/src/gameLogic/handleAnswer.js'
-import refillChecker from '/src/gameLogic/refillChecker.js'
-import { TypingEffect } from '/src/components/TypingEffect.tsx'
+import makeRandomDecision from '../gameLogic/makeRandomDecision.js'
+import handleAnswer from '../gameLogic/handleAnswer'
+import refillChecker from '../gameLogic/refillChecker.js'
+import { TypingEffect } from '../components/TypingEffect.tsx'
 import { motion } from 'framer-motion';
 
 export default function Playing(props) {

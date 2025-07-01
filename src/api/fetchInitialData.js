@@ -1,5 +1,5 @@
-import fetchAIQuotes from "/src/api/fetchAIQuotes.js"
-import fetchKanyeQuotes from "/src/api/fetchKanyeQuotes.js"
+import fetchAIQuotes from "./fetchAIQuotes.js"
+import fetchKanyeQuotes from "./fetchKanyeQuotes.js"
 
 export default async function fetchInitialData(kanyeQuotes, setKanyeQuotes, AIQuotes, setAIQuotes, usedQuotes, setUsedQuotes) {
       try {
